@@ -1,11 +1,10 @@
-package com.example.expense_tracker_backend.model;
+package com.expense_tracker.model;
 
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "expenses")

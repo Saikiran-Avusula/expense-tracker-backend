@@ -1,7 +1,6 @@
-package com.example.expense_tracker_backend.model;
+package com.expense_tracker.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.CreatedBy;
 
 import java.time.LocalDateTime;
 
