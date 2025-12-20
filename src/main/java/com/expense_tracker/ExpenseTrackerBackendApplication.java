@@ -28,7 +28,7 @@ public class ExpenseTrackerBackendApplication {
 
 //	testing with dummy data for CRUD operations
 //	@Bean
-//	CommandLineRunner commandLineRunner(UsersRepository usersRepository,
+//	CommandLineRunner(UsersRepository usersRepository,
 //										CategoriesRepository categoriesRepository,
 //										ExpensesRepository expensesRepository){
 //		return args -> {

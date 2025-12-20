@@ -89,3 +89,10 @@ Think of `config` as the **envelope** for your request:
     - Backend build successful (`mvnw clean install`).
     - Application starts successfully on port 8080.
     - API endpoints are protected (returning HTTP 401 Unauthorized as expected).
+   
+### Updated :  
+#### 📊 Current Progress
+- Entities (`Users`, `Categories`, `Expenses`) completed and verified.
+- Repository layer tested with `CommandLineRunner` (dummy data insert + delete works).
+- Database connection stable with local MySQL.
+- Security layer initialized (basic auth placeholder). 
