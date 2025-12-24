@@ -90,9 +90,63 @@ Think of `config` as the **envelope** for your request:
     - Application starts successfully on port 8080.
     - API endpoints are protected (returning HTTP 401 Unauthorized as expected).
    
-### Updated :  
-#### 📊 Current Progress
-- Entities (`Users`, `Categories`, `Expenses`) completed and verified.
-- Repository layer tested with `CommandLineRunner` (dummy data insert + delete works).
-- Database connection stable with local MySQL.
-- Security layer initialized (basic auth placeholder). 
+### Updates:  
+#### 📊 Current Progress (As of Dec 24, 2025)
+- **Authentication & User Management**
+    - JWT-based authentication fully implemented and verified.
+    - Login response updated to include `userName` and `userEmail` for frontend personalization.
+    - **Forgot Password / Reset Password** feature implemented (Backend API ready).
+- **CRUD Operations**
+    - Categories: Full CRUD (Create, Read, Update, Delete) with color coding.
+    - Expenses: Full CRUD with support for partial updates (PATCH) and monthly filtering.
+- **Serialization & DTOs**
+    - Optimized API responses using DTOs (`CategoryResponse`, `ExpenseResponse`) to avoid Hibernate proxy issues.
+- **Security**
+    - Protected all business endpoints; public access only for login and registration.
+
+## 🛠️ Getting Started (Backend)
+
+### Prerequisites
+- **Java 21** or higher
+- **MySQL** (version 8.0+)
+- **Maven** (optional, uses wrapper `mvnw`)
+
+### Setup Instructions
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd expense-tracker-backend
+    ```
+2.  **Database Configuration**:
+    - Ensure a MySQL database is running locally.
+    - Update `src/main/resources/application.properties` with your credentials:
+    ```properties
+    spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker_db
+    spring.datasource.username=YOUR_USERNAME
+    spring.datasource.password=YOUR_PASSWORD
+    ```
+3.  **Build the project**:
+    ```bash
+    ./mvnw clean install
+    ```
+4.  **Run the application**:
+    ```bash
+    ./mvnw spring-boot:run
+    ```
+    The server will start at `http://localhost:8080`.
+
+---
+
+## 🧪 Sample Working Response (Expense DTO)
+```json
+{
+  "id": 5,
+  "amount": 1500,
+  "description": "Petrol refill",
+  "expenseDate": "2025-12-23",
+  "createdAt": "2025-12-23T17:40:00",
+  "categoryName": "Fuel",
+  "userEmail": "sai@example.com"
+}
+```
+

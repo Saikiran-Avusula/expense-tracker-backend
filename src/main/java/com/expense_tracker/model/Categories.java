@@ -1,10 +1,15 @@
 package com.expense_tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.persistence.PrePersist;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "categories")
 public class Categories {
@@ -13,8 +18,9 @@ public class Categories {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //each category belongs to user
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private Users user;
 
     private String name;
@@ -25,11 +31,11 @@ public class Categories {
     private String color;
 
 
-    @Column(name = "created_at", updatable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    protected void onCreate(){
-        createdAt = LocalDateTime.now();
+    @PrePersist protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 //    use case onCreate():
 //    🧠 Even simpler analogy

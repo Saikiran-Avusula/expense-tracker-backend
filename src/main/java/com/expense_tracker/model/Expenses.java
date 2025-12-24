@@ -1,10 +1,12 @@
 package com.expense_tracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "expenses")
@@ -16,10 +18,12 @@ public class Expenses {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private Users user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER) // each category belongs to user
     @JoinColumn(name = "category_id", nullable = false)
+    // @JsonIgnore - Removed to allow frontend to see category details
     private Categories category;
 
     @Column(nullable = true, precision = 10, scale = 2)
